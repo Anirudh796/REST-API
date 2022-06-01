@@ -16,7 +16,7 @@ ConstraintValidator<CustomDateConstraint, String>  {
         } catch (Exception e) {
             return false;
         }
-		return false;
+		return true;
 	}
 
 }

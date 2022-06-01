@@ -1,11 +1,11 @@
 package com.restapi.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,14 +30,10 @@ public class MessageController {
 	@Autowired
     MessageService msgservice;
 	
-	@GetMapping("/test")
-    public Response testRoute() {
-        logger.info("in tesing route");
-        return new Response(201, "test successful..");
-    }
+	
 	
 	@PostMapping("/messages")
-	public Response MessageHandler(@RequestBody @Validated Request requestBody, HttpServletRequest request) {
+	public Response MessageHandler(@Valid @RequestBody  Request requestBody, HttpServletRequest request) {
 		Response response = null;
 		 try {
 	            Client client = (Client) request.getAttribute("client");
@@ -46,7 +42,7 @@ public class MessageController {
 	            logger.info("result here..." + result);
 	            response = new Response(200, "Message scheduled successfully");
 
-	        } catch (SQLErrorExceptions e) {
+	        }catch (SQLErrorExceptions e) {
 	            logger.warn("sql exception occured");
 	            response = new Response(e.getErrorCode(), e.getErrorMessage());
 	        } catch (Exception e) {

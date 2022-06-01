@@ -38,7 +38,7 @@ public class Messagedata {
 
 	}
 	
-	public List<Message> getAllMessagesInOneMinute() throws SQLErrorExceptions {
+	public List<Message> getAllPendingMessages() throws SQLErrorExceptions {
 
       String query = "select * from message_details where pending_status = true and scheduled_at < now()";
 

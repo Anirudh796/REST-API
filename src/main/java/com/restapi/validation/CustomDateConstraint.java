@@ -14,7 +14,7 @@ import java.lang.annotation.RetentionPolicy;
 @Target({ FIELD, METHOD})
 @Constraint(validatedBy = CustomDateValidator.class)
 public @interface CustomDateConstraint {
-	String message() default "Invalid Phone number";
+	String message() default "Invalid date format";
 	Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 

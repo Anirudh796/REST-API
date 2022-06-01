@@ -49,7 +49,7 @@ public class MessageServiceTest {
     @Test
     void pollMessagesFromDatabase() throws SQLErrorExceptions {
         List<Message> messages = Collections.emptyList();
-        when(msgdata.getAllMessagesInOneMinute()).thenReturn(messages);
+        when(msgdata.getAllPendingMessages()).thenReturn(messages);
         List<Message> resultList = msgService.pollMessagesFromDatabase();
         assertEquals(messages.size(), resultList.size());
     }

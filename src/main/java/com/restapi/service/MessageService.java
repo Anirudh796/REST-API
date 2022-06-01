@@ -31,7 +31,7 @@ public class MessageService {
         return msgdata.updateMessageStatus(pending_status, submited_status, whatsAppMessageId, submitted_at, message_id);
     }
 	public List<Message> pollMessagesFromDatabase() throws SQLErrorExceptions {
-        return msgdata.getAllMessagesInOneMinute();
+        return msgdata.getAllPendingMessages();
     }
 
 }

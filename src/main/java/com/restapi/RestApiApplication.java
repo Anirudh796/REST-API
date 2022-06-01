@@ -30,7 +30,7 @@ public class RestApiApplication {
 	@EventListener(ApplicationReadyEvent.class)
     public void startScheduler()
     {
-        //run a task after every 30 seconds
+       
         timer.schedule(task,1000,30000);
 
     }
